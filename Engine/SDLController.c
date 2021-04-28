@@ -27,10 +27,10 @@ bool SdlController_Init(struct SDLContext* context) {
                 success = false;
             } else {
                 //Initializing Renderer Color
-                SDL_RendererDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
+                SDL_SetRenderDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
 
                 //Initialize PNG Loading
-                if(!(IMG_INIT(CONTROLLER_IMAGE_FLAGS) & CONTROLLER_IMAGE_FLAGS)){
+                if(!(IMG_Init(CONTROLLER_IMAGE_FLAGS) & CONTROLLER_IMAGE_FLAGS)){
                     printf("$[FATAL] Failed initialize SDL_Image PNG loading, SDL_image_Error: %s\n", IMG_GetError());
                     success = false;
                 }
@@ -60,7 +60,7 @@ SDL_Texture *SdlController_LoadImage(struct SDLContext* context, char *filename)
 
         SDL_FreeSurface(loadedSurface);
     }
-    return finalImage;
+    return finalTexture;
 }
 
 //Disposes and Deletes everything SDL Related

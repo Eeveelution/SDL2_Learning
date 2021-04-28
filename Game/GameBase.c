@@ -7,11 +7,11 @@
 SDL_Texture* testTexture = NULL;
 
 void GameBase_Initialize(struct SDLContext* context){
-    testTexture = SdlController_LoadImage("test.png");
+    testTexture = SdlController_LoadImage(context, "test.png");
 }
 
 void GameBase_Update(struct SDLContext *context) {
-    printf("hi");
+
 }
 
 void GameBase_Draw(double delta, struct SDLContext *context) {

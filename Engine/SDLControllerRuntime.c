@@ -5,6 +5,8 @@
 #include "SDLControllerRuntime.h"
 
 void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *game) {
+    game->Initialize(context);
+    
     bool run = true;
     //Stores Currently Looping Event
     SDL_Event event;
