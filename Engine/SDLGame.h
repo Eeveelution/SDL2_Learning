@@ -8,6 +8,7 @@
 #include "SDL.h"
 
 struct SDLGame {
+    void (*Initialize)(struct SDLContext* context);
     void (*Update)(struct SDLContext* context);
     void (*Draw)(double deltaTime, struct SDLContext* context);
     void (*OnClose)(struct SDLContext* context);

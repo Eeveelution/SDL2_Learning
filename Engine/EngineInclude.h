@@ -8,6 +8,6 @@
 #include "SDLGame.h"
 #include "SDLController.h"
 #include "SDLControllerRuntime.h"
-#include "Objects/SDLContext/SDLContext.h"
+#include "SDLContext.h"
 
 #endif //SDL2_LEARNING_ENGINEINCLUDE_H
