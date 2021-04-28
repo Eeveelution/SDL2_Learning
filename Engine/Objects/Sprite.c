@@ -23,7 +23,7 @@ void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *i
         printf("$[WARNING] Failed to load image `%s`; SDL_Image_Error: %s", imageFilename, IMG_GetError());
         return;
     } else {
-        SDL_SetColorKey(loadedSurface, SDK_True, SDL_MapRGB(loadedSurface->format, colorKey.r, colorKey.g, colorKey.b));
+        SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, colorKey.r, colorKey.g, colorKey.b));
         
         texture = SDL_CreateTextureFromSurface(context->renderer, loadedSurface);
         

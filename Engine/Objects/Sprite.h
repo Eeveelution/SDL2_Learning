@@ -17,7 +17,7 @@ struct Sprite {
 
 struct Sprite* Sprite_NewSpriteEmpty();
 
-void Sprite_LoadImage(struct Sprite *sprite, char* imageFilename, Color3_t colorKey);
+void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *imageFilename, Color3_t colorKey);
 void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context);
 void Sprite_SetLocation(struct Sprite *sprite, int x, int y);
 void Sprite_Free(struct Sprite *sprite);
