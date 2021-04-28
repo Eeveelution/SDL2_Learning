@@ -39,4 +39,14 @@ void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *i
     }
 }
 
+void Sprite_Free(struct Sprite *sprite) {
+    if(sprite->spriteTexture != NULL){
+        SDL_DestroyTexture(sprite->spriteTexture);
+        
+        sprite->spriteTexture = NULL;
+        
+        sprite->spriteWidth = 0;
+        sprite->spriteHeight = 0;
+    }
+}
 
