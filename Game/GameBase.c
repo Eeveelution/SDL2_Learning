@@ -2,8 +2,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "Engine/SDLController.h"
-#include "Engine/Objects/SDLContext/SDLContext.h"
+#include "../Engine/SDLController.h"
+#include "../Engine/Objects/SDLContext/SDLContext.h"
 
 int main() {
     struct SDLContext ctx;
@@ -26,8 +26,7 @@ int main() {
                     }
                 }
                 
-                SDL_BlitSurface(image, NULL, ctx.screenSurface, NULL);
-                SDL_UpdateWindowSurface(ctx.window);
+                
             }
         }
     }
