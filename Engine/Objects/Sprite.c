@@ -8,8 +8,12 @@ struct Sprite *Sprite_NewSpriteEmpty() {
     struct Sprite *sprite = malloc(sizeof(struct Sprite));
     
     sprite->spriteTexture = NULL;
-    sprite->spriteWidth = 0;
-    sprite->spriteHeight = 0;
+    
+    sprite->spriteSize.x = 0;
+    sprite->spriteSize.y = 0;
+    
+    sprite->spriteLocation.x = 0;
+    sprite->spriteLocation.y = 0;
     
     return sprite;
 }
@@ -31,8 +35,8 @@ void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *i
             printf("$[WARNING] Failed to create Texture out of `%s`; SDL_Error: %s", imageFilename, SDL_GetError());
             return;
         } else {
-            sprite->spriteWidth = loadedSurface->w;
-            sprite->spriteHeight = loadedSurface->h;
+            sprite->spriteSize.x = loadedSurface->w;
+            sprite->spriteSize.y = loadedSurface->h;
         }
     
         SDL_FreeSurface(loadedSurface);
@@ -45,8 +49,14 @@ void Sprite_Free(struct Sprite *sprite) {
         
         sprite->spriteTexture = NULL;
         
-        sprite->spriteWidth = 0;
-        sprite->spriteHeight = 0;
+        sprite->spriteSize.x = 0;
+        sprite->spriteSize.y = 0;
     }
+}
+
+void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context) {
+    SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
+    
+    SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &renderRect);
 }
 

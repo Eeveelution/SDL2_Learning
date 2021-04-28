@@ -11,5 +11,6 @@
 #include "SDLContext.h"
 #include "Objects/Sprite.h"
 #include "Objects/Color3.h"
+#include "Objects/Vector2.h"
 
 #endif //SDL2_LEARNING_ENGINEINCLUDE_H

@@ -10,9 +10,13 @@
 
 #include "../EngineInclude.h"
 
+#include "Vector2.h"
+
 struct Sprite {
     SDL_Texture *spriteTexture;
-    int spriteWidth, spriteHeight;
+    struct Vector2 spriteSize;
+    struct Vector2 spriteLocation;
+    
 } Sprite;
 
 struct Sprite* Sprite_NewSpriteEmpty();
