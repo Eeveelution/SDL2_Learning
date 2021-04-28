@@ -5,13 +5,13 @@
 
 #include <stdbool.h>
 
-#include "Objects/SDLContext.h";
+#include "Objects/SDLContext/SDLContext.h";
 
 #ifndef SDL2_LEARNING_SDLCONTROLLER_H
 #define SDL2_LEARNING_SDLCONTROLLER_H
 
 bool SdlController_Init(struct SDLContext* context);
-void SdlController_Close();
+void SdlController_Close(struct SDLContext* context);
 
 SDL_Surface* SdlController_LoadImage(char* filename);
 

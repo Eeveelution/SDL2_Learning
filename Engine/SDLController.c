@@ -27,11 +27,15 @@ bool SdlController_Init(struct SDLContext* context) {
 
 //Loads an Image and returns
 SDL_Surface *SdlController_LoadImage(char *filename) {
-    return NULL;
+    SDL_Surface* image = SDL_LoadBMP(filename);
+    
+    return image;
 }
 
 //Disposes and Deletes everything SDL Related
-void SdlController_Close() {
-
+void SdlController_Close(struct SDLContext* context) {
+    //TODO: Store all Loaded Image Pointers and Free them Here
+    
+    SDL_DestroyWindow(context->window);
 }
 
