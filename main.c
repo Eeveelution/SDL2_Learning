@@ -2,34 +2,25 @@
 
 #include <SDL2/SDL.h>
 
+#include "Engine/SDLController.h"
+#include "Engine/Objects/SDLContext/SDLContext.h"
+
 int main() {
-    SDL_Window*  window = NULL;
-    SDL_Surface* screenSurface = NULL;
+    struct SDLContext ctx;
     
-    //Initializing
-    if(SDL_Init(SDL_INIT_VIDEO) < 0){
-        printf("SDL failed to Initialize; SDL_Error: %s\n", SDL_GetError());
+    if(!SdlController_Init(&ctx)){
+        return -1;
     } else {
-        window = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
+        SDL_Surface *image = SdlController_LoadImage("test.bmp");
         
-        if(window == NULL) {
-            printf("Failed to Create SDL Window, SDL_Error: %s\n", SDL_GetError());
-        } else {
-            screenSurface = SDL_GetWindowSurface(window);
-            
-            
+        if(image != NULL){
+            SDL_BlitSurface(image, NULL, ctx.screenSurface, NULL);
     
-            SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-    
-            SDL_UpdateWindowSurface(window);
-    
+            SDL_UpdateWindowSurface(ctx.window);
     
             SDL_Delay(15000);
         }
     }
-    
-    SDL_DestroyWindow(window);
-    SDL_Quit();
 
     return 0;
 }

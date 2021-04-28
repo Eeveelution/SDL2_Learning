@@ -37,5 +37,6 @@ void SdlController_Close(struct SDLContext* context) {
     //TODO: Store all Loaded Image Pointers and Free them Here
     
     SDL_DestroyWindow(context->window);
+    SDL_Quit();
 }
 
