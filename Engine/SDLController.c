@@ -26,10 +26,25 @@ bool SdlController_Init(struct SDLContext* context) {
 }
 
 //Loads an Image and returns
-SDL_Surface *SdlController_LoadImage(char *filename) {
-    SDL_Surface* image = SDL_LoadBMP(filename);
+SDL_Surface *SdlController_LoadImage(struct SDLContext* context, char *filename) {
+    SDL_Surface* finalImage = NULL;
+
+    SDL_Surface* loadedImage = SDL_LoadBMP(filename);
+
+    if(loadedImage == NULL){
+        return NULL;
+    } else {
+        //Converts Loaded Surface to Screen format
+        finalImage = SDL_ConvertSurface(loadedImage, context->screenSurface->format, 0);
+
+        if(finalImage == NULL){
+            return NULL;
+        }
+
+        SDL_FreeSurface(loadedImage);
+    }
     
-    return image;
+    return finalImage;
 }
 
 //Disposes and Deletes everything SDL Related
