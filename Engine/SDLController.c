@@ -42,7 +42,7 @@ bool SdlController_Init(struct SDLContext* context) {
 }
 
 //Loads an Image and returns
-SDL_Surface *SdlController_LoadImage(struct SDLContext* context, char *filename) {
+SDL_Texture *SdlController_LoadImage(struct SDLContext* context, char *filename) {
     SDL_Texture* finalTexture = NULL;
 
     //Load Image

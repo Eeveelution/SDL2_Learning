@@ -4,6 +4,10 @@
 
 #include "GameBase.h"
 
+void GameBase_Initialize(struct SDLContext* context){
+
+}
+
 void GameBase_Update(struct SDLContext *context) {
     printf("hi");
 }

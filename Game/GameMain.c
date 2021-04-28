@@ -14,7 +14,8 @@ int main() {
         return -1;
     } else {
         struct SDLGame game;
-        
+
+        game.Initialize = GameBase_Initialize;
         game.Draw = GameBase_Draw;
         game.OnClose = GameBase_OnClose;
         game.Update = GameBase_Update;
