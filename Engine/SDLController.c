@@ -43,23 +43,23 @@ bool SdlController_Init(struct SDLContext* context) {
 
 //Loads an Image and returns
 SDL_Surface *SdlController_LoadImage(struct SDLContext* context, char *filename) {
-    SDL_Surface* finalImage = NULL;
+    SDL_Texture* finalTexture = NULL;
 
-    SDL_Surface* loadedImage = SDL_LoadBMP(filename);
+    //Load Image
+    SDL_Surface* loadedSurface = IMG_Load(filename);
 
-    if(loadedImage == NULL){
+    if(loadedSurface == NULL){
+        printf("![WARNING] Failed to load image `%s` SDL_Image_Error: %s\n", filename, IMG_GetError());
         return NULL;
     } else {
-        //Converts Loaded Surface to Screen format
-        finalImage = SDL_ConvertSurface(loadedImage, context->screenSurface->format, 0);
+        finalTexture = SDL_CreateTextureFromSurface(context->renderer, loadedSurface);
 
-        if(finalImage == NULL){
-            return NULL;
+        if(finalTexture == NULL){
+            printf("![WARNING] Failed to crete texture from `%s`, SDL_Image_Error: %s", filename, SDL_GetError());
         }
 
-        SDL_FreeSurface(loadedImage);
+        SDL_FreeSurface(loadedSurface);
     }
-
     return finalImage;
 }
 
