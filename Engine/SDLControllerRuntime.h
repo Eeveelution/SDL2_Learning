@@ -3,7 +3,7 @@
 //
 #include "SDLController.h"
 #include "SDLGame.h"
-#include "Objects/SDLContext/SDLContext.h"
+#include "SDLContext.h"
 
 #ifndef SDL2_LEARNING_SDLCONTROLLERRUNTIME_H
 #define SDL2_LEARNING_SDLCONTROLLERRUNTIME_H

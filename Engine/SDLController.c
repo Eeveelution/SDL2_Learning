@@ -9,16 +9,32 @@ bool SdlController_Init(struct SDLContext* context) {
     
     //Initialize SDL
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
-        printf("SDL failed to Initialize; SDL_Error: %s\n", SDL_GetError());
+        printf("$[FATAL] SDL failed to Initialize; SDL_Error: %s\n", SDL_GetError());
         success = false;
     } else {
+        //Creating Window
         context->window = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
         
         if(context->window == NULL){
-            printf("Failed to Create SDL Window, SDL_Error: %s\n", SDL_GetError());
+            printf("$[FATAL] Failed to Create SDL Window, SDL_Error: %s\n", SDL_GetError());
             success = false;
         } else {
-            context->screenSurface = SDL_GetWindowSurface(context->window);
+            //Creating Renderer
+            context->renderer = SDL_CreateRenderer(context->window, -1, SDL_RENDERER_ACCELERATED);
+
+            if(context->renderer == NULL){
+                printf("$[FATAL] Failed to create SDL Renderer, SDL_Error: %s\n", SDL_GetError());
+                success = false;
+            } else {
+                //Initializing Renderer Color
+                SDL_RendererDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
+
+                //Initialize PNG Loading
+                if(!(IMG_INIT(CONTROLLER_IMAGE_FLAGS) & CONTROLLER_IMAGE_FLAGS)){
+                    printf("$[FATAL] Failed initialize SDL_Image PNG loading, SDL_image_Error: %s\n", IMG_GetError());
+                    success = false;
+                }
+            }
         }
     }
     
@@ -43,7 +59,7 @@ SDL_Surface *SdlController_LoadImage(struct SDLContext* context, char *filename)
 
         SDL_FreeSurface(loadedImage);
     }
-    
+
     return finalImage;
 }
 

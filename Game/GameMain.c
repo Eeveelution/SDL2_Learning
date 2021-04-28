@@ -3,7 +3,7 @@
 #include <SDL2/SDL.h>
 
 #include "../Engine/SDLController.h"
-#include "../Engine/Objects/SDLContext/SDLContext.h"
+#include "../Engine/SDLContext.h"
 
 #include "GameBase.h"
 

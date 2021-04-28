@@ -5,11 +5,14 @@
 
 #include <stdbool.h>
 
-#include "Objects/SDLContext/SDLContext.h"
+#include "SDLContext.h"
 #include "SDLGame.h"
 
 #ifndef SDL2_LEARNING_SDLCONTROLLER_H
 #define SDL2_LEARNING_SDLCONTROLLER_H
+
+#define CONTROLLER_IMAGE_FLAGS IMG_INIT_PNG
+
 
 bool SdlController_Init(struct SDLContext* context);
 void SdlController_Close(struct SDLContext* context);

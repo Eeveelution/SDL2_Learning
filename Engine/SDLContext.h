@@ -8,7 +8,7 @@
 
 struct SDLContext {
     SDL_Window* window;
-    SDL_Surface* screenSurface;
+    SDL_Renderer* renderer;
 };
 
 #endif //SDL2_LEARNING_SDLCONTEXT_H
