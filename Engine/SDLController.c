@@ -39,8 +39,3 @@ void SdlController_Close(struct SDLContext* context) {
     SDL_DestroyWindow(context->window);
     SDL_Quit();
 }
-
-void SdlController_StartGame(struct SDLContext *context, struct SDLGame *game) {
-
-}
-
