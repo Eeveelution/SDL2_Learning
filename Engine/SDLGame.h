@@ -5,6 +5,8 @@
 #ifndef SDL2_LEARNING_SDLGAME_H
 #define SDL2_LEARNING_SDLGAME_H
 
+#include "SDL.h"
+
 struct SDLGame {
     void (*Update)(struct SDLContext* context);
     void (*Draw)(double deltaTime, struct SDLContext* context);

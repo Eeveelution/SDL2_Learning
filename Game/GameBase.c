@@ -1,35 +1,22 @@
-#include <stdio.h>
+//
+// Created by eevee on 28.04.21.
+//
 
-#include <SDL2/SDL.h>
+#include "GameBase.h"
 
-#include "../Engine/SDLController.h"
-#include "../Engine/Objects/SDLContext/SDLContext.h"
-
-int main() {
-    struct SDLContext ctx;
-    
-    if(!SdlController_Init(&ctx)){
-        return -1;
-    } else {
-        SDL_Surface *image = SdlController_LoadImage("test.bmp");
-        
-        if(image != NULL){
-            bool run = true;
-            //Stores Currently Looping Event
-            SDL_Event event;
-            
-            while(run){
-                //Poll Events
-                while(SDL_PollEvent(&event) != 0) {
-                    if (event.type == SDL_QUIT) {
-                        run = false;
-                    }
-                }
-                
-                
-            }
-        }
-    }
-
-    return 0;
+void GameBase_Update(struct SDLContext *context) {
+    printf("hi");
 }
+
+void GameBase_Draw(double delta, struct SDLContext *context) {
+
+}
+
+void GameBase_OnClose(struct SDLContext *context) {
+
+}
+
+void GameBase_OnSdlEvent(SDL_Event event) {
+
+}
+

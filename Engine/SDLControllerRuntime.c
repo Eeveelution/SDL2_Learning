@@ -26,7 +26,7 @@ void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *ga
         
         game->Update(context);
         
-        //Update Delta Time
+        //GameBase_Update Delta Time
         delta_last = delta_now;
         delta_now = SDL_GetPerformanceCounter();
         delta_time = (double)((delta_now - delta_last) * 1000.0 / (double)SDL_GetPerformanceFrequency());
@@ -34,6 +34,6 @@ void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *ga
         game->Draw(delta_time, context);
     }
     
-    game->OnClose();
+    game->OnClose(context);
 }
 
