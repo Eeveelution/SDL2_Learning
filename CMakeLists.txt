@@ -3,7 +3,7 @@ project(SDL2_Learning C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(SDL2_Learning main.c)
+add_executable(SDL2_Learning main.c Engine/SDLController.h Engine/SDLController.c Engine/Objects/SDLContext.h)
 
 INCLUDE(FindPkgConfig)
 
