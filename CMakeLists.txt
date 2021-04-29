@@ -3,7 +3,7 @@ project(SDL2_Learning C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(SDL2_Learning Game/GameMain.c Engine/SDLController.h Engine/SDLController.c Engine/SDLContext.h Engine/SDLGame.h Engine/SDLControllerRuntime.c Engine/SDLControllerRuntime.h Game/GameBase.h Engine/EngineInclude.h Game/GameBase.c)
+add_executable(SDL2_Learning Game/GameMain.c Engine/SDLController.h Engine/SDLController.c Engine/SDLContext.h Engine/SDLGame.h Engine/SDLControllerRuntime.c Engine/SDLControllerRuntime.h Game/GameBase.h Engine/EngineInclude.h Game/GameBase.c Engine/Objects/Sprite.h Engine/Objects/Sprite.c Engine/Objects/Color3.h Engine/Objects/Vector2.h)
 
 INCLUDE(FindPkgConfig)
 

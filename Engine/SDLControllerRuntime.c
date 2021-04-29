@@ -5,6 +5,7 @@
 #include "SDLControllerRuntime.h"
 
 void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *game) {
+    //Let the Game Initialize
     game->Initialize(context);
     
     bool run = true;
@@ -19,6 +20,7 @@ void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *ga
     while(run){
         //Poll Events
         while(SDL_PollEvent(&event) != 0) {
+            //Only let the Game Handle Events that aren't exists
             if (event.type == SDL_QUIT) {
                 run = false;
             } else {
@@ -35,7 +37,8 @@ void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *ga
         
         game->Draw(delta_time, context);
     }
-    
+    //Close everything Down
     game->OnClose(context);
+    SdlController_Close(context);
 }
 

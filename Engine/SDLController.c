@@ -12,6 +12,9 @@ bool SdlController_Init(struct SDLContext* context) {
         printf("$[FATAL] SDL failed to Initialize; SDL_Error: %s\n", SDL_GetError());
         success = false;
     } else {
+        if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")){
+            printf("$[WARNING] Failed to enable Linear Texture filtering.");
+        }
         //Creating Window
         context->window = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, SDL_WINDOW_SHOWN);
         
@@ -37,7 +40,6 @@ bool SdlController_Init(struct SDLContext* context) {
             }
         }
     }
-    
     return success;
 }
 

@@ -4,10 +4,15 @@
 
 #include "GameBase.h"
 
-SDL_Texture* testTexture = NULL;
+struct Sprite *sprite;
 
 void GameBase_Initialize(struct SDLContext* context){
-    testTexture = SdlController_LoadImage(context, "test.png");
+    Color3 colorKey = {0x01, 0x00, 0x00};
+    sprite = Sprite_NewSpriteTextured(context, "test.png", colorKey);
+    
+    struct Vector2 position = {0, 0};
+    
+    Sprite_SetLocation(sprite, position);
 }
 
 void GameBase_Update(struct SDLContext *context) {
@@ -15,16 +20,18 @@ void GameBase_Update(struct SDLContext *context) {
 }
 
 void GameBase_Draw(double delta, struct SDLContext *context) {
+    SDL_SetRenderDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
     SDL_RenderClear(context->renderer);
-
-    SDL_RenderCopy(context->renderer, testTexture, NULL, NULL);
+    
+    //Sprite_Draw(sprite, context);
+    SDL_Rect rect = {sprite->spriteLocation.x, sprite->spriteLocation.x, sprite->spriteSize.x, sprite->spriteSize.y};
+    SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &rect);
 
     SDL_RenderPresent(context->renderer);
 }
 
 void GameBase_OnClose(struct SDLContext *context) {
-    SDL_DestroyTexture(testTexture);
-    testTexture = NULL;
+    Sprite_Free(sprite);
 }
 
 void GameBase_OnSdlEvent(SDL_Event event) {
