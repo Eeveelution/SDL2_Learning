@@ -15,6 +15,13 @@ struct Sprite *Sprite_NewSpriteEmpty() {
     sprite->spriteLocation.x = 0;
     sprite->spriteLocation.y = 0;
     
+    struct Vector2 centerNullPoint = {0, 0};
+    
+    sprite->centerPoint = centerNullPoint;
+    sprite->spriteLocation = centerNullPoint;
+    sprite->rotationAngle = 0;
+    sprite->rendererFlip = SDL_FLIP_NONE;
+    
     return sprite;
 }
 
@@ -22,6 +29,13 @@ struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageF
     struct Sprite *sprite = malloc(sizeof(struct Sprite));
     
     Sprite_LoadImage(sprite, context, imageFilename, colorKey);
+    
+    struct Vector2 centerNullPoint = {0, 0};
+    
+    sprite->centerPoint = centerNullPoint;
+    sprite->spriteLocation = centerNullPoint;
+    sprite->rotationAngle = 0;
+    sprite->rendererFlip = SDL_FLIP_NONE;
     
     return sprite;
 }
@@ -90,7 +104,7 @@ void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
 }
 
 void Sprite_SetColor(struct Sprite *sprite, Color3 color) {
-    SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b)
+    SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b);
 }
 
 void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha) {

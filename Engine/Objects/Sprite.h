@@ -19,8 +19,8 @@ struct Sprite {
     struct Vector2 spriteSize;
     struct Vector2 spriteLocation;
     
-    double rotationAngle = 0;
-    struct Vector2 centerPoint = {0, 0};
+    double rotationAngle;
+    struct Vector2 centerPoint;
     
     SDL_RendererFlip rendererFlip;
 };

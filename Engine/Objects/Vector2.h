@@ -5,17 +5,12 @@
 #ifndef SDL2_LEARNING_VECTOR2_H
 #define SDL2_LEARNING_VECTOR2_H
 
+#include <SDL.h>
+
 struct Vector2 {
     int x, y;
 };
 
-SDL_Point* Vector2_ToPoint(struct Vector2 *srcPoint) {
-    SDL_Point* point = malloc(sizeof(SDL_Point));
-    
-    point->x = srcPoint->x;
-    point->y = srcPoint->y;
-    
-    return point;
-}
+SDL_Point* Vector2_ToPoint(struct Vector2 *srcPoint);
 
 #endif //SDL2_LEARNING_VECTOR2_H

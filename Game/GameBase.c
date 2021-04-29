@@ -8,11 +8,15 @@ struct Sprite *sprite;
 
 void GameBase_Initialize(struct SDLContext* context){
     Color3 colorKey = {0x01, 0x00, 0x00};
+    Color3 testColor = {0xff, 0x00, 0xff};
     sprite = Sprite_NewSpriteTextured(context, "test.png", colorKey);
     
     struct Vector2 position = {0, 0};
     
     Sprite_SetLocation(sprite, position);
+    Sprite_SetAlpha(sprite, 128);
+    Sprite_SetColor(sprite, testColor);
+    Sprite_SetRotation(sprite, 50);c
 }
 
 void GameBase_Update(struct SDLContext *context) {
