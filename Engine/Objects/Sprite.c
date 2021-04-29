@@ -27,6 +27,8 @@ struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageF
 }
 
 void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *imageFilename, Color3 colorKey) {
+    Sprite_Free(sprite);
+    
     SDL_Texture *texture = NULL;
     
     SDL_Surface *loadedSurface = IMG_Load(imageFilename);

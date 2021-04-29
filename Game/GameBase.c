@@ -20,6 +20,7 @@ void GameBase_Update(struct SDLContext *context) {
 }
 
 void GameBase_Draw(double delta, struct SDLContext *context) {
+    SDL_SetRenderDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
     SDL_RenderClear(context->renderer);
     
     Sprite_Draw(sprite, context);
