@@ -86,3 +86,7 @@ void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_R
 void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
     sprite->spriteLocation = position;
 }
+
+void Sprite_SetColor(struct Sprite *sprite, Color3 color) {
+    SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b)
+}
