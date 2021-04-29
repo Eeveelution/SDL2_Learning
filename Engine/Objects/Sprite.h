@@ -15,14 +15,18 @@
 
 struct Sprite {
     SDL_Texture *spriteTexture;
+    
     struct Vector2 spriteSize;
     struct Vector2 spriteLocation;
     
+    double rotationAngle = 0;
+    struct Vector2 centerPoint = {0, 0};
+    
+    SDL_RendererFlip rendererFlip;
 };
 
 struct Sprite* Sprite_NewSpriteEmpty();
 struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageFilename, Color3 colorKey);
-
 
 void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *imageFilename, Color3 colorKey);
 void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context);
@@ -30,6 +34,9 @@ void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_R
 
 void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position);
 void Sprite_SetColor(struct Sprite *sprite, Color3 color);
+void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha);
+void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point);
+void Sprite_SetRotation(struct Sprite *sprite, double angle);
 
 void Sprite_Free(struct Sprite *sprite);
 

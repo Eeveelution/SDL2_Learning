@@ -94,3 +94,10 @@ void Sprite_SetColor(struct Sprite *sprite, Color3 color) {
 void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha) {
     SDL_SetTextureAlphaMod(sprite->spriteTexture, alpha);
 }
+
+void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point) {
+    sprite->centerPoint = point;
+}
+void Sprite_SetRotation(struct Sprite *sprite, double angle) {
+    sprite->rotationAngle = angle;
+}
