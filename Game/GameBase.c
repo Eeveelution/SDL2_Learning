@@ -7,10 +7,10 @@
 struct Sprite *sprite;
 
 void GameBase_Initialize(struct SDLContext* context){
-    Color3 colorKey = {0x00, 0x00, 0x00};
+    Color3 colorKey = {0x01, 0x00, 0x00};
     sprite = Sprite_NewSpriteTextured(context, "test.png", colorKey);
     
-    struct Vector2 position = {128, 128};
+    struct Vector2 position = {0, 0};
     
     Sprite_SetLocation(sprite, position);
 }
