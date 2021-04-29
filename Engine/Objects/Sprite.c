@@ -71,6 +71,18 @@ void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context) {
     SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &renderRect);
 }
 
+void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_Rect *clip){
+    SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
+    
+    //Only Apply if clip isn't null
+    if(clip != NULL) {
+        renderRect.w = clip->w;
+        renderRect.h = clip->h;
+    }
+    
+    SDL_RenderCopy(context->renderer, sprite->spriteTexture, clip, &renderRect);
+}
+
 void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
     sprite->spriteLocation = position;
 }
