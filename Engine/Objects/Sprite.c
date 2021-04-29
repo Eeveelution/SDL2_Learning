@@ -90,3 +90,7 @@ void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
 void Sprite_SetColor(struct Sprite *sprite, Color3 color) {
     SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b)
 }
+
+void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha) {
+    SDL_SetTextureAlphaMod(sprite->spriteTexture, alpha);
+}
