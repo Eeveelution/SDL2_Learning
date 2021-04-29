@@ -68,7 +68,8 @@ void Sprite_Free(struct Sprite *sprite) {
 void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context) {
     SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
     
-    SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &renderRect);
+    SDL_RenderCopyEx(context->renderer, sprite->spriteTexture, NULL, &renderRect, sprite->rotationAngle,
+                   Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
 void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_Rect *clip){
@@ -80,7 +81,8 @@ void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_R
         renderRect.h = clip->h;
     }
     
-    SDL_RenderCopy(context->renderer, sprite->spriteTexture, clip, &renderRect);
+    SDL_RenderCopyEx(context->renderer, sprite->spriteTexture, clip, &renderRect, sprite->rotationAngle,
+                     Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
 void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
