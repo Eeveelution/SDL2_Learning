@@ -40,7 +40,6 @@ bool SdlController_Init(struct SDLContext* context) {
             }
         }
     }
-    
     return success;
 }
 

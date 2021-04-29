@@ -51,6 +51,7 @@ void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *i
     
         SDL_FreeSurface(loadedSurface);
     }
+    sprite->spriteTexture = texture;
 }
 
 void Sprite_Free(struct Sprite *sprite) {

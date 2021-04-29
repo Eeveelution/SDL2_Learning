@@ -23,7 +23,9 @@ void GameBase_Draw(double delta, struct SDLContext *context) {
     SDL_SetRenderDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
     SDL_RenderClear(context->renderer);
     
-    Sprite_Draw(sprite, context);
+    //Sprite_Draw(sprite, context);
+    SDL_Rect rect = {sprite->spriteLocation.x, sprite->spriteLocation.x, sprite->spriteSize.x, sprite->spriteSize.y};
+    SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &rect);
 
     SDL_RenderPresent(context->renderer);
 }
