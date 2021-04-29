@@ -8,6 +8,7 @@ struct Sprite *sprite;
 
 void GameBase_Initialize(struct SDLContext* context){
     Color3 colorKey = {0x01, 0x00, 0x00};
+    Color3 testColor = {0xff, 0x00, 0xff};
     sprite = Sprite_NewSpriteTextured(context, "test.png", colorKey);
     
     struct Vector2 position = {0, 0};
@@ -25,7 +26,8 @@ void GameBase_Draw(double delta, struct SDLContext *context) {
     
     SDL_Rect rect = {256, 128, 256, 128};
     
-    Sprite_DrawClipped(sprite, context, &rect);
+    Sprite_Draw(sprite, context);
+    Sprite_SetFlip(sprite, SDL_FLIP_VERTICAL);
 
     SDL_RenderPresent(context->renderer);
 }

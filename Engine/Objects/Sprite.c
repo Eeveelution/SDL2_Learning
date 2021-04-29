@@ -15,6 +15,13 @@ struct Sprite *Sprite_NewSpriteEmpty() {
     sprite->spriteLocation.x = 0;
     sprite->spriteLocation.y = 0;
     
+    struct Vector2 centerNullPoint = {0, 0};
+    
+    sprite->centerPoint = centerNullPoint;
+    sprite->spriteLocation = centerNullPoint;
+    sprite->rotationAngle = 0;
+    sprite->rendererFlip = SDL_FLIP_NONE;
+    
     return sprite;
 }
 
@@ -22,6 +29,13 @@ struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageF
     struct Sprite *sprite = malloc(sizeof(struct Sprite));
     
     Sprite_LoadImage(sprite, context, imageFilename, colorKey);
+    
+    struct Vector2 centerNullPoint = {0, 0};
+    
+    sprite->centerPoint = centerNullPoint;
+    sprite->spriteLocation = centerNullPoint;
+    sprite->rotationAngle = 0;
+    sprite->rendererFlip = SDL_FLIP_NONE;
     
     return sprite;
 }
@@ -68,7 +82,8 @@ void Sprite_Free(struct Sprite *sprite) {
 void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context) {
     SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
     
-    SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &renderRect);
+    SDL_RenderCopyEx(context->renderer, sprite->spriteTexture, NULL, &renderRect, sprite->rotationAngle,
+                   Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
 void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_Rect *clip){
@@ -80,9 +95,29 @@ void Sprite_DrawClipped(struct Sprite *sprite, struct SDLContext *context, SDL_R
         renderRect.h = clip->h;
     }
     
-    SDL_RenderCopy(context->renderer, sprite->spriteTexture, clip, &renderRect);
+    SDL_RenderCopyEx(context->renderer, sprite->spriteTexture, clip, &renderRect, sprite->rotationAngle,
+                     Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
 void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
     sprite->spriteLocation = position;
+}
+
+void Sprite_SetColor(struct Sprite *sprite, Color3 color) {
+    SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b);
+}
+
+void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha) {
+    SDL_SetTextureAlphaMod(sprite->spriteTexture, alpha);
+}
+
+void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point) {
+    sprite->centerPoint = point;
+}
+void Sprite_SetRotation(struct Sprite *sprite, double angle) {
+    sprite->rotationAngle = angle;
+}
+
+void Sprite_SetFlip(struct Sprite *sprite, SDL_RendererFlip flip) {
+    sprite->rendererFlip = flip;
 }
