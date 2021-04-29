@@ -18,7 +18,15 @@ struct Sprite *Sprite_NewSpriteEmpty() {
     return sprite;
 }
 
-void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *imageFilename, Color3_t colorKey) {
+struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageFilename, Color3 colorKey) {
+    struct Sprite *sprite = malloc(sizeof(struct Sprite));
+    
+    Sprite_LoadImage(sprite, context, imageFilename, colorKey);
+    
+    return sprite;
+}
+
+void Sprite_LoadImage(struct Sprite *sprite, struct SDLContext *context, char *imageFilename, Color3 colorKey) {
     SDL_Texture *texture = NULL;
     
     SDL_Surface *loadedSurface = IMG_Load(imageFilename);
@@ -60,3 +68,6 @@ void Sprite_Draw(struct Sprite *sprite, struct SDLContext *context) {
     SDL_RenderCopy(context->renderer, sprite->spriteTexture, NULL, &renderRect);
 }
 
+void Sprite_SetLocation(struct Sprite *sprite, struct Vector2 position) {
+    sprite->spriteLocation = position;
+}
