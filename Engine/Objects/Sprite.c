@@ -117,3 +117,7 @@ void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point) {
 void Sprite_SetRotation(struct Sprite *sprite, double angle) {
     sprite->rotationAngle = angle;
 }
+
+void Sprite_SetFlip(struct Sprite *sprite, SDL_RendererFlip flip) {
+    sprite->rendererFlip = flip;
+}

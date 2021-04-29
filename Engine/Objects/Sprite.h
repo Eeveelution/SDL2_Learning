@@ -37,6 +37,7 @@ void Sprite_SetColor(struct Sprite *sprite, Color3 color);
 void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha);
 void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point);
 void Sprite_SetRotation(struct Sprite *sprite, double angle);
+void Sprite_SetFlip(struct Sprite *sprite, SDL_RendererFlip flip);
 
 void Sprite_Free(struct Sprite *sprite);
 

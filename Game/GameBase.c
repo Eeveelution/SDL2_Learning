@@ -14,9 +14,6 @@ void GameBase_Initialize(struct SDLContext* context){
     struct Vector2 position = {0, 0};
     
     Sprite_SetLocation(sprite, position);
-    Sprite_SetAlpha(sprite, 128);
-    Sprite_SetColor(sprite, testColor);
-    Sprite_SetRotation(sprite, 50);c
 }
 
 void GameBase_Update(struct SDLContext *context) {
@@ -29,7 +26,8 @@ void GameBase_Draw(double delta, struct SDLContext *context) {
     
     SDL_Rect rect = {256, 128, 256, 128};
     
-    Sprite_DrawClipped(sprite, context, &rect);
+    Sprite_Draw(sprite, context);
+    Sprite_SetFlip(sprite, SDL_FLIP_VERTICAL);
 
     SDL_RenderPresent(context->renderer);
 }
