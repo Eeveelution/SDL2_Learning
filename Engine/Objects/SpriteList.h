@@ -13,7 +13,7 @@ typedef struct SpriteList {
 } egSpriteList_t;
 
 void egSpriteList_Init(egSpriteList_t *list);
-int egSpriteList_Insert(egSpriteList_t *list, struct Sprite item);
+unsigned long egSpriteList_Insert(egSpriteList_t *list, struct Sprite item);
 void egSpriteList_Remove(egSpriteList_t *list, int index);
 void egSpriteList_Free(egSpriteList_t *list);
 
