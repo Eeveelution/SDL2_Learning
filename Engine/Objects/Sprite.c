@@ -36,6 +36,7 @@ struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageF
     sprite->spriteLocation = centerNullPoint;
     sprite->rotationAngle = 0;
     sprite->rendererFlip = SDL_FLIP_NONE;
+    sprite->isClickable = false;
     
     return sprite;
 }
@@ -120,4 +121,8 @@ void Sprite_SetRotation(struct Sprite *sprite, double angle) {
 
 void Sprite_SetFlip(struct Sprite *sprite, SDL_RendererFlip flip) {
     sprite->rendererFlip = flip;
+}
+
+void Sprite_SetClickable(struct Sprite *sprite, bool clickable) {
+    sprite->isClickable = clickable;
 }

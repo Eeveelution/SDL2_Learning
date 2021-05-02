@@ -12,4 +12,6 @@ struct SpriteManager {
     struct SpriteList spriteList;
 };
 
+void egSpriteManager_Draw(struct SpriteManager *manager, struct SDLContext *context);
+
 #endif //SDL2_LEARNING_SPRITEMANAGER_H

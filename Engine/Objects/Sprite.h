@@ -23,6 +23,8 @@ struct Sprite {
     struct Vector2 centerPoint;
     
     SDL_RendererFlip rendererFlip;
+    
+    bool isClickable;
 };
 
 struct Sprite* Sprite_NewSpriteEmpty();
@@ -38,6 +40,8 @@ void Sprite_SetAlpha(struct Sprite *sprite, uint8_t alpha);
 void Sprite_SetCenterPoint(struct Sprite *sprite, struct Vector2 point);
 void Sprite_SetRotation(struct Sprite *sprite, double angle);
 void Sprite_SetFlip(struct Sprite *sprite, SDL_RendererFlip flip);
+
+void Sprite_SetClickable(struct Sprite *sprite, bool clickable);
 
 void Sprite_Free(struct Sprite *sprite);
 
