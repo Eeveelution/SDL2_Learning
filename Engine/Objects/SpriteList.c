@@ -4,7 +4,7 @@
 
 #include "SpriteList.h"
 
-void egSpriteList_Init(egSpriteList_t *list) {
+void egSpriteList_Init(struct SpriteList *list) {
     struct Sprite *sprite_pointer;
     
     sprite_pointer = malloc(sizeof(struct Sprite));
@@ -17,17 +17,17 @@ void egSpriteList_Init(egSpriteList_t *list) {
     }
     else
     {
-        list->array = sprite_pointer;
+        list->list = sprite_pointer;
         list->size = 0;
     }
 }
 
-unsigned long egSpriteList_Insert(egSpriteList_t *list, struct Sprite item) {
+unsigned long egSpriteList_Insert(struct SpriteList *list, struct Sprite item) {
     struct Sprite *sprite_pointer;
     
     list->size += 1;
     
-    sprite_pointer = realloc(list->array, list->size * sizeof(struct Sprite));
+    sprite_pointer = realloc(list->list, list->size * sizeof(struct Sprite));
     
     if (sprite_pointer == NULL)
     {
@@ -37,17 +37,17 @@ unsigned long egSpriteList_Insert(egSpriteList_t *list, struct Sprite item) {
     }
     else
     {
-        list->array = sprite_pointer;
-        list->array[list->size-1] = item;
+        list->list = sprite_pointer;
+        list->list[list->size - 1] = item;
         
         return list->size-1;
     }
 }
 
-void egSpriteList_Remove(egSpriteList_t *list, int index) {
+void egSpriteList_Remove(struct SpriteList *list, int index) {
     int i;
     
-    egSpriteList_t temp;
+    struct SpriteList temp;
     
     struct Sprite *sprite_pointer;
     
@@ -55,17 +55,17 @@ void egSpriteList_Remove(egSpriteList_t *list, int index) {
     
     for(i=index; i < list->size; i++)
     {
-        list->array[i] = list->array[i + 1];
+        list->list[i] = list->list[i + 1];
     }
     
     list->size -= 1;
     
     for (i = 0; i < list->size; i++)
     {
-        egSpriteList_Insert(&temp, list->array[i]);
+        egSpriteList_Insert(&temp, list->list[i]);
     }
     
-    sprite_pointer = realloc(temp.array, temp.size * sizeof(struct Sprite));
+    sprite_pointer = realloc(temp.list, temp.size * sizeof(struct Sprite));
     
     if (sprite_pointer == NULL)
     {
@@ -75,13 +75,13 @@ void egSpriteList_Remove(egSpriteList_t *list, int index) {
     }
     else
     {
-        list->array = sprite_pointer;
+        list->list = sprite_pointer;
     }
 }
 
-void egSpriteList_Free(egSpriteList_t *list) {
-    free(list->array);
-    list->array = NULL;
+void egSpriteList_Free(struct SpriteList *list) {
+    free(list->list);
+    list->list = NULL;
     list->size = 0;
 }
 

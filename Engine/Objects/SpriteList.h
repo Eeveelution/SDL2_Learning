@@ -7,14 +7,14 @@
 
 #include "Sprite.h"
 
-typedef struct SpriteList {
-    struct Sprite *array;
+struct SpriteList {
+    struct Sprite *list;
     size_t size;
-} egSpriteList_t;
+};
 
-void egSpriteList_Init(egSpriteList_t *list);
-unsigned long egSpriteList_Insert(egSpriteList_t *list, struct Sprite item);
-void egSpriteList_Remove(egSpriteList_t *list, int index);
-void egSpriteList_Free(egSpriteList_t *list);
+void egSpriteList_Init(struct SpriteList *list);
+unsigned long egSpriteList_Insert(struct SpriteList *list, struct Sprite item);
+void egSpriteList_Remove(struct SpriteList *list, int index);
+void egSpriteList_Free(struct SpriteList *list);
 
 #endif //SDL2_LEARNING_SPRITELIST_H

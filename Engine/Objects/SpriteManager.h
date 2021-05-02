@@ -9,7 +9,7 @@
 #include "SpriteList.h"
 
 struct SpriteManager {
-    struct SpriteList spriteList;
+    struct SpriteList *spriteList;
 };
 
 void egSpriteManager_Draw(struct SpriteManager *manager, struct SDLContext *context);

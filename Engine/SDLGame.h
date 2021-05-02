@@ -2,6 +2,8 @@
 // Created by eevee on 28.04.21.
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvisibility"
 #ifndef SDL2_LEARNING_SDLGAME_H
 #define SDL2_LEARNING_SDLGAME_H
 
