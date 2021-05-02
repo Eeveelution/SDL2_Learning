@@ -8,10 +8,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
-#include "../EngineInclude.h"
+#include <stdbool.h>
 
 #include "Vector2.h"
 #include "Color3.h"
+#include "../SDLContext.h"
 
 struct Sprite {
     SDL_Texture *spriteTexture;
@@ -24,7 +25,11 @@ struct Sprite {
     
     SDL_RendererFlip rendererFlip;
     
+    double drawDepth;
+    
     bool isClickable;
+    
+    int spriteTag;
 };
 
 struct Sprite* Sprite_NewSpriteEmpty();

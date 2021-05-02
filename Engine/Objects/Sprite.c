@@ -37,6 +37,8 @@ struct Sprite* Sprite_NewSpriteTextured(struct SDLContext *context, char *imageF
     sprite->rotationAngle = 0;
     sprite->rendererFlip = SDL_FLIP_NONE;
     sprite->isClickable = false;
+    sprite->spriteTag = -1;
+    sprite->drawDepth = 0.0;
     
     return sprite;
 }

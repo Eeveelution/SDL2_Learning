@@ -4,6 +4,9 @@
 
 #include "GameBase.h"
 
+#include "../Engine/Objects/Color3.h"
+#include "../Engine/Objects/Sprite.h"
+
 struct Sprite *sprite;
 
 void GameBase_Initialize(struct SDLContext* context){
