@@ -7,13 +7,13 @@
 
 void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *context) {
     for(int i = 0; i != manager->spriteList->size - 1; i++){
-        Sprite_Draw(&manager->spriteList->list[i], context);
+        egSprite_Draw(&manager->spriteList->list[i], context);
     }
 }
 
 void egSpriteManager_AddSprite(struct egSpriteManager *manager, struct egSprite sprite) {
     if(sprite.isClickable){
-        
+    
     }
     
     egSpriteList_Insert(manager->spriteList, sprite);

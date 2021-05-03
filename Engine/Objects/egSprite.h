@@ -32,21 +32,19 @@ struct egSprite {
     int spriteTag;
 };
 
-struct egSprite* Sprite_NewSpriteEmpty();
-struct egSprite* Sprite_NewSpriteTextured(struct egSDLContext *context, char *imageFilename, egColor3 colorKey);
+struct egSprite* egSprite_NewSpriteEmpty(bool clickable);
+struct egSprite* egSprite_NewSpriteTextured(struct egSDLContext *context, char *imageFilename, egColor3 colorKey, bool clickable);
 
-void Sprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, char *imageFilename, egColor3 colorKey);
-void Sprite_Draw(struct egSprite *sprite, struct egSDLContext *context);
-void Sprite_DrawClipped(struct egSprite *sprite, struct egSDLContext *context, SDL_Rect *clip);
+void egSprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, char *imageFilename, egColor3 colorKey);
+void egSprite_Draw(struct egSprite *sprite, struct egSDLContext *context);
+void egSprite_DrawClipped(struct egSprite *sprite, struct egSDLContext *context, SDL_Rect *clip);
 
-void Sprite_SetLocation(struct egSprite *sprite, struct Vector2 position);
-void Sprite_SetColor(struct egSprite *sprite, egColor3 color);
-void Sprite_SetAlpha(struct egSprite *sprite, uint8_t alpha);
-void Sprite_SetCenterPoint(struct egSprite *sprite, struct Vector2 point);
-void Sprite_SetRotation(struct egSprite *sprite, double angle);
-void Sprite_SetFlip(struct egSprite *sprite, SDL_RendererFlip flip);
-
-void Sprite_SetClickable(struct egSprite *sprite, bool clickable);
+void egSprite_SetLocation(struct egSprite *sprite, struct Vector2 position);
+void egSprite_SetColor(struct egSprite *sprite, egColor3 color);
+void egSprite_SetAlpha(struct egSprite *sprite, uint8_t alpha);
+void egSprite_SetCenterPoint(struct egSprite *sprite, struct Vector2 point);
+void egSprite_SetRotation(struct egSprite *sprite, double angle);
+void egSprite_SetFlip(struct egSprite *sprite, SDL_RendererFlip flip);
 
 void Sprite_Free(struct egSprite *sprite);
 

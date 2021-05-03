@@ -4,8 +4,10 @@
 
 #include "egSprite.h"
 
-struct egSprite *Sprite_NewSpriteEmpty() {
+struct egSprite *egSprite_NewSpriteEmpty(bool clickable) {
     struct egSprite *sprite = malloc(sizeof(struct egSprite));
+    
+    sprite->isClickable = clickable;
     
     sprite->spriteTexture = NULL;
     
@@ -25,10 +27,12 @@ struct egSprite *Sprite_NewSpriteEmpty() {
     return sprite;
 }
 
-struct egSprite* Sprite_NewSpriteTextured(struct egSDLContext *context, char *imageFilename, egColor3 colorKey) {
+struct egSprite* egSprite_NewSpriteTextured(struct egSDLContext *context, char *imageFilename, egColor3 colorKey, bool clickable) {
     struct egSprite *sprite = malloc(sizeof(struct egSprite));
     
-    Sprite_LoadImage(sprite, context, imageFilename, colorKey);
+    sprite->isClickable = clickable;
+    
+    egSprite_LoadImage(sprite, context, imageFilename, colorKey);
     
     struct Vector2 centerNullPoint = {0, 0};
     
@@ -43,7 +47,7 @@ struct egSprite* Sprite_NewSpriteTextured(struct egSDLContext *context, char *im
     return sprite;
 }
 
-void Sprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, char *imageFilename, egColor3 colorKey) {
+void egSprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, char *imageFilename, egColor3 colorKey) {
     Sprite_Free(sprite);
     
     SDL_Texture *texture = NULL;
@@ -82,14 +86,14 @@ void Sprite_Free(struct egSprite *sprite) {
     }
 }
 
-void Sprite_Draw(struct egSprite *sprite, struct egSDLContext *context) {
+void egSprite_Draw(struct egSprite *sprite, struct egSDLContext *context) {
     SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
     
     SDL_RenderCopyEx(context->renderer, sprite->spriteTexture, NULL, &renderRect, sprite->rotationAngle,
                    Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
-void Sprite_DrawClipped(struct egSprite *sprite, struct egSDLContext *context, SDL_Rect *clip){
+void egSprite_DrawClipped(struct egSprite *sprite, struct egSDLContext *context, SDL_Rect *clip){
     SDL_Rect renderRect = { sprite->spriteLocation.x, sprite->spriteLocation.y, sprite->spriteSize.x, sprite->spriteSize.y };
     
     //Only Apply if clip isn't null
@@ -102,29 +106,25 @@ void Sprite_DrawClipped(struct egSprite *sprite, struct egSDLContext *context, S
                      Vector2_ToPoint(&sprite->centerPoint), sprite->rendererFlip);
 }
 
-void Sprite_SetLocation(struct egSprite *sprite, struct Vector2 position) {
+void egSprite_SetLocation(struct egSprite *sprite, struct Vector2 position) {
     sprite->spriteLocation = position;
 }
 
-void Sprite_SetColor(struct egSprite *sprite, egColor3 color) {
+void egSprite_SetColor(struct egSprite *sprite, egColor3 color) {
     SDL_SetTextureColorMod(sprite->spriteTexture, color.r, color.g, color.b);
 }
 
-void Sprite_SetAlpha(struct egSprite *sprite, uint8_t alpha) {
+void egSprite_SetAlpha(struct egSprite *sprite, uint8_t alpha) {
     SDL_SetTextureAlphaMod(sprite->spriteTexture, alpha);
 }
 
-void Sprite_SetCenterPoint(struct egSprite *sprite, struct Vector2 point) {
+void egSprite_SetCenterPoint(struct egSprite *sprite, struct Vector2 point) {
     sprite->centerPoint = point;
 }
-void Sprite_SetRotation(struct egSprite *sprite, double angle) {
+void egSprite_SetRotation(struct egSprite *sprite, double angle) {
     sprite->rotationAngle = angle;
 }
 
-void Sprite_SetFlip(struct egSprite *sprite, SDL_RendererFlip flip) {
+void egSprite_SetFlip(struct egSprite *sprite, SDL_RendererFlip flip) {
     sprite->rendererFlip = flip;
-}
-
-void Sprite_SetClickable(struct egSprite *sprite, bool clickable) {
-    sprite->isClickable = clickable;
 }
