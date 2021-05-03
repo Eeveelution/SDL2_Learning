@@ -56,3 +56,20 @@ void egSpriteManager_MouseHoverEvent(struct egSpriteManager *manager, struct Vec
                 sprite->OnMouseHover(mousePoint);
     }
 }
+
+void egSpriteManager_MouseDownEvent(struct egSpriteManager *manager, struct Vector2 mousePoint) {
+    //Loop over Clickable Sprites and trigger a Click event
+    for(int i = 0; i != manager->hoverableSpriteList->size - 1; i++){
+        struct egSprite *sprite = &manager->clickableSpriteList->list[i];
+        //Top Left Corner
+        int topX = sprite->spriteLocation.x,
+                topY = sprite->spriteLocation.y;
+        //Bottom Right Corner
+        int bottomX = sprite->spriteLocation.x + sprite->spriteSize.x,
+                bottomY = sprite->spriteLocation.y + sprite->spriteSize.y;
+        //Check if Point Exists
+        if(Vector2_Contains(topX, topY, bottomX, bottomY, mousePoint.x, mousePoint.y))
+            if(sprite->OnMouseDown != NULL)
+                sprite->OnMouseDown(mousePoint);
+    }
+}
