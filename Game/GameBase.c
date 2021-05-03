@@ -36,10 +36,17 @@ void GameBase_Draw(double delta, struct egSDLContext *context) {
 }
 
 void GameBase_OnClose(struct egSDLContext *context) {
-    Sprite_Free(sprite);
+    egSprite_Free(sprite);
 }
 
-void GameBase_OnSdlEvent(SDL_Event event) {
+void OnSDLEvent(SDL_Event event){
 
 }
 
+void OnMouseHover(struct Vector2 point){
+
+}
+
+void OnMouseClick(struct Vector2 point){
+
+}

@@ -30,6 +30,8 @@ struct egSprite {
     bool handlesMouseDown;
     bool handlesMouseOver;
     
+    void(*OnMouseDown)(struct Vector2 point);
+    void(*OnMouseHover)(struct Vector2 point);
     
     int spriteTag;
 };
@@ -48,6 +50,6 @@ void egSprite_SetCenterPoint(struct egSprite *sprite, struct Vector2 point);
 void egSprite_SetRotation(struct egSprite *sprite, double angle);
 void egSprite_SetFlip(struct egSprite *sprite, SDL_RendererFlip flip);
 
-void Sprite_Free(struct egSprite *sprite);
+void egSprite_Free(struct egSprite *sprite);
 
 #endif //SDL2_LEARNING_EGSPRITE_H

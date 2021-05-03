@@ -20,7 +20,7 @@ int main() {
         game.Draw = GameBase_Draw;
         game.OnClose = GameBase_OnClose;
         game.Update = GameBase_Update;
-        game.OnKeyDown = GameBase_OnSdlEvent;
+        game.OnSDLEvent = GameBase_OnSdlEvent;
     
         egSdlControllerRuntime_RunGame(&ctx, &game);
     }

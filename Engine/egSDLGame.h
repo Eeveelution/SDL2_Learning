@@ -8,14 +8,16 @@
 #define SDL2_LEARNING_SDLGAME_H
 
 #include "SDL.h"
+#include "Objects/Vector2.h"
 
 struct egSDLGame {
     void (*Initialize)(struct egSDLContext* context);
     void (*Update)(struct egSDLContext* context);
     void (*Draw)(double deltaTime, struct egSDLContext* context);
     void (*OnClose)(struct egSDLContext* context);
-    void (*OnKeyDown)(SDL_Event event);
-    void (*OnMouseEvent)(SDL_Event event);
+    void (*OnSDLEvent)(SDL_Event event);
+    void (*OnMouseHover)(struct Vector2 point);
+    void (*OnMouseClick)(struct Vector2 point);
 };
 
 #endif //SDL2_LEARNING_SDLGAME_H

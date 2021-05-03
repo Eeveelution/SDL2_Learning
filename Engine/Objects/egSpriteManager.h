@@ -11,6 +11,7 @@
 struct egSpriteManager {
     struct egSpriteList *spriteList;
     struct egSpriteList *clickableSpriteList;
+    struct egSpriteList *hoverableSpriteList;
 };
 
 void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *context);
@@ -18,5 +19,8 @@ void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *
 void egSpriteManager_AddSprite(struct egSpriteManager *manager, struct egSprite sprite);
 int egSpriteManager_DrawDepthSorter(const void* a, const void* b);
 void egSpriteManager_SortSprites(struct egSpriteManager *manager);
+
+void egSpriteManager_MouseHoverEvent(struct egSpriteManager *manager, struct Vector2 mousePoint);
+void egSpriteManager_MouseDownEvent(struct egSpriteManager *manager, struct Vector2 mousePoint);
 
 #endif //SDL2_LEARNING_EGSPRITEMANAGER_H

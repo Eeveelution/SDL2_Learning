@@ -48,7 +48,7 @@ struct egSprite* egSprite_NewSpriteTextured(struct egSDLContext *context, char *
 }
 
 void egSprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, char *imageFilename, egColor3 colorKey) {
-    Sprite_Free(sprite);
+    egSprite_Free(sprite);
     
     SDL_Texture *texture = NULL;
     
@@ -75,7 +75,7 @@ void egSprite_LoadImage(struct egSprite *sprite, struct egSDLContext *context, c
     sprite->spriteTexture = texture;
 }
 
-void Sprite_Free(struct egSprite *sprite) {
+void egSprite_Free(struct egSprite *sprite) {
     if(sprite->spriteTexture != NULL){
         SDL_DestroyTexture(sprite->spriteTexture);
         
