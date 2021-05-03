@@ -14,6 +14,9 @@ struct egSpriteManager {
     struct egSpriteList *hoverableSpriteList;
 };
 
+struct egSpriteManager *egSpriteManager_CreateNew();
+void egSprtieManager_Free(struct egSpriteManager *manager);
+
 void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *context);
 
 void egSpriteManager_AddSprite(struct egSpriteManager *manager, struct egSprite sprite);

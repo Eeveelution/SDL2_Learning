@@ -5,7 +5,21 @@
 #include "egSpriteManager.h"
 #include "egSpriteList.h"
 
+
+struct egSpriteManager *egSpriteManager_CreateNew () {
+    struct egSpriteManager *manager = malloc(sizeof(struct egSpriteManager));
+    
+    egSpriteList_Init(manager->spriteList);
+    egSpriteList_Init(manager->hoverableSpriteList);
+    egSpriteList_Init(manager->clickableSpriteList);
+    
+    return manager;
+}
+
 void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *context) {
+    //Sort them by Draw Depth first
+    egSpriteManager_SortSprites(manager);
+    
     for(int i = 0; i != manager->spriteList->size - 1; i++){
         egSprite_Draw(&manager->spriteList->list[i], context);
     }
@@ -36,8 +50,7 @@ int egSpriteManager_DrawDepthSorter(const void *a, const void *b) {
 }
 
 void egSpriteManager_SortSprites(struct egSpriteManager *manager) {
-    qsort(manager->spriteList->list, manager->spriteList->size - 1, sizeof(struct egSprite),
-          egSpriteManager_DrawDepthSorter);
+    qsort(manager->spriteList->list, manager->spriteList->size - 1, sizeof(struct egSprite), egSpriteManager_DrawDepthSorter);
 }
 
 void egSpriteManager_MouseHoverEvent(struct egSpriteManager *manager, struct Vector2 mousePoint) {
@@ -72,4 +85,12 @@ void egSpriteManager_MouseDownEvent(struct egSpriteManager *manager, struct Vect
             if(sprite->OnMouseDown != NULL)
                 sprite->OnMouseDown(mousePoint);
     }
+}
+
+void egSprtieManager_Free (struct egSpriteManager *manager) {
+    egSpriteList_Free(manager->spriteList);
+    egSpriteList_Free(manager->hoverableSpriteList);
+    egSpriteList_Free(manager->clickableSpriteList);
+    
+    free(manager);
 }
