@@ -9,6 +9,10 @@
 struct egSpriteManager *egSpriteManager_CreateNew () {
     struct egSpriteManager *manager = malloc(sizeof(struct egSpriteManager));
     
+    manager->spriteList = malloc(sizeof(struct egSpriteList));
+    manager->hoverableSpriteList = malloc(sizeof(struct egSpriteList));
+    manager->clickableSpriteList = malloc(sizeof(struct egSpriteList));
+    
     egSpriteList_Init(manager->spriteList);
     egSpriteList_Init(manager->hoverableSpriteList);
     egSpriteList_Init(manager->clickableSpriteList);
@@ -87,7 +91,7 @@ void egSpriteManager_MouseDownEvent(struct egSpriteManager *manager, struct Vect
     }
 }
 
-void egSprtieManager_Free (struct egSpriteManager *manager) {
+void egSprtieManager_Free(struct egSpriteManager *manager) {
     egSpriteList_Free(manager->spriteList);
     egSpriteList_Free(manager->hoverableSpriteList);
     egSpriteList_Free(manager->clickableSpriteList);
