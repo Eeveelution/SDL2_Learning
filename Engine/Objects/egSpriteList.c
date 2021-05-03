@@ -2,12 +2,12 @@
 // Created by eevee on 02.05.21.
 //
 
-#include "SpriteList.h"
+#include "egSpriteList.h"
 
-void egSpriteList_Init(struct SpriteList *list) {
-    struct Sprite *sprite_pointer;
+void egSpriteList_Init(struct egSpriteList *list) {
+    struct egSprite *sprite_pointer;
     
-    sprite_pointer = malloc(sizeof(struct Sprite));
+    sprite_pointer = malloc(sizeof(struct egSprite));
     
     if (sprite_pointer == NULL)
     {
@@ -22,12 +22,12 @@ void egSpriteList_Init(struct SpriteList *list) {
     }
 }
 
-unsigned long egSpriteList_Insert(struct SpriteList *list, struct Sprite item) {
-    struct Sprite *sprite_pointer;
+unsigned long egSpriteList_Insert(struct egSpriteList *list, struct egSprite item) {
+    struct egSprite *sprite_pointer;
     
     list->size += 1;
     
-    sprite_pointer = realloc(list->list, list->size * sizeof(struct Sprite));
+    sprite_pointer = realloc(list->list, list->size * sizeof(struct egSprite));
     
     if (sprite_pointer == NULL)
     {
@@ -44,12 +44,12 @@ unsigned long egSpriteList_Insert(struct SpriteList *list, struct Sprite item) {
     }
 }
 
-void egSpriteList_Remove(struct SpriteList *list, int index) {
+void egSpriteList_Remove(struct egSpriteList *list, int index) {
     int i;
     
-    struct SpriteList temp;
+    struct egSpriteList temp;
     
-    struct Sprite *sprite_pointer;
+    struct egSprite *sprite_pointer;
     
     egSpriteList_Init(&temp);
     
@@ -65,7 +65,7 @@ void egSpriteList_Remove(struct SpriteList *list, int index) {
         egSpriteList_Insert(&temp, list->list[i]);
     }
     
-    sprite_pointer = realloc(temp.list, temp.size * sizeof(struct Sprite));
+    sprite_pointer = realloc(temp.list, temp.size * sizeof(struct egSprite));
     
     if (sprite_pointer == NULL)
     {
@@ -79,7 +79,7 @@ void egSpriteList_Remove(struct SpriteList *list, int index) {
     }
 }
 
-void egSpriteList_Free(struct SpriteList *list) {
+void egSpriteList_Free(struct egSpriteList *list) {
     free(list->list);
     list->list = NULL;
     list->size = 0;

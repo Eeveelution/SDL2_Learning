@@ -9,11 +9,11 @@
 
 #include "SDL.h"
 
-struct SDLGame {
-    void (*Initialize)(struct SDLContext* context);
-    void (*Update)(struct SDLContext* context);
-    void (*Draw)(double deltaTime, struct SDLContext* context);
-    void (*OnClose)(struct SDLContext* context);
+struct egSDLGame {
+    void (*Initialize)(struct egSDLContext* context);
+    void (*Update)(struct egSDLContext* context);
+    void (*Draw)(double deltaTime, struct egSDLContext* context);
+    void (*OnClose)(struct egSDLContext* context);
     void (*OnSdlEvent)(SDL_Event event);
 };
 

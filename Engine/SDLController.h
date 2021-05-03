@@ -6,18 +6,17 @@
 
 #include <stdbool.h>
 
-#include "SDLContext.h"
-#include "SDLGame.h"
+#include "egSDLContext.h"
+#include "egSDLGame.h"
 
 #ifndef SDL2_LEARNING_SDLCONTROLLER_H
 #define SDL2_LEARNING_SDLCONTROLLER_H
 
 #define CONTROLLER_IMAGE_FLAGS IMG_INIT_PNG
 
+bool egSdlController_Init(struct egSDLContext* context);
+void egSdlController_Close(struct egSDLContext* context);
 
-bool SdlController_Init(struct SDLContext* context);
-void SdlController_Close(struct SDLContext* context);
-
-SDL_Texture *SdlController_LoadImage(struct SDLContext* context, char *filename);
+SDL_Texture *egSdlController_LoadImage(struct egSDLContext* context, char *filename);
 
 #endif //SDL2_LEARNING_SDLCONTROLLER_H

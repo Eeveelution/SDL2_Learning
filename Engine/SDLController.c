@@ -4,7 +4,7 @@
 #include "SDLController.h"
 
 //Initializes SDL
-bool SdlController_Init(struct SDLContext* context) {
+bool egSdlController_Init(struct egSDLContext* context) {
     bool success = true;
     
     //Initialize SDL
@@ -44,7 +44,7 @@ bool SdlController_Init(struct SDLContext* context) {
 }
 
 //Loads an Image and returns
-SDL_Texture *SdlController_LoadImage(struct SDLContext* context, char *filename) {
+SDL_Texture *egSdlController_LoadImage(struct egSDLContext* context, char *filename) {
     SDL_Texture* finalTexture = NULL;
 
     //Load Image
@@ -66,7 +66,7 @@ SDL_Texture *SdlController_LoadImage(struct SDLContext* context, char *filename)
 }
 
 //Disposes and Deletes everything SDL Related
-void SdlController_Close(struct SDLContext* context) {
+void egSdlController_Close(struct egSDLContext* context) {
     //TODO: Store all Loaded Image Pointers and Free them Here
     
     SDL_DestroyWindow(context->window);

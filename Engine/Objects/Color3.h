@@ -7,6 +7,6 @@
 
 typedef struct Color3 {
     int r, g, b;
-} Color3;
+} egColor3;
 
 #endif //SDL2_LEARNING_COLOR3_H

@@ -3,17 +3,17 @@
 #include <SDL2/SDL.h>
 
 #include "../Engine/SDLController.h"
-#include "../Engine/SDLContext.h"
+#include "../Engine/egSDLContext.h"
 
 #include "GameBase.h"
 
 int main() {
-    struct SDLContext ctx;
+    struct egSDLContext ctx;
     
-    if(!SdlController_Init(&ctx)){
+    if(!egSdlController_Init(&ctx)){
         return -1;
     } else {
-        struct SDLGame game;
+        struct egSDLGame game;
 
         game.Initialize = GameBase_Initialize;
         game.Draw = GameBase_Draw;

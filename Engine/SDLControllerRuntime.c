@@ -4,7 +4,7 @@
 
 #include "SDLControllerRuntime.h"
 
-void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *game) {
+void SdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGame *game) {
     //Let the Game Initialize
     game->Initialize(context);
     
@@ -39,6 +39,6 @@ void SdlControllerRuntime_RunGame(struct SDLContext *context, struct SDLGame *ga
     }
     //Close everything Down
     game->OnClose(context);
-    SdlController_Close(context);
+    egSdlController_Close(context);
 }
 

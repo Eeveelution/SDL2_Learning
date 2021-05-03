@@ -5,13 +5,13 @@
 #include "GameBase.h"
 
 #include "../Engine/Objects/Color3.h"
-#include "../Engine/Objects/Sprite.h"
+#include "../Engine/Objects/egSprite.h"
 
-struct Sprite *sprite;
+struct egSprite *sprite;
 
-void GameBase_Initialize(struct SDLContext* context){
-    Color3 colorKey = {0x01, 0x00, 0x00};
-    Color3 testColor = {0xff, 0x00, 0xff};
+void GameBase_Initialize(struct egSDLContext* context){
+    egColor3 colorKey = {0x01, 0x00, 0x00};
+    egColor3 testColor = {0xff, 0x00, 0xff};
     sprite = Sprite_NewSpriteTextured(context, "test.png", colorKey);
     
     struct Vector2 position = {0, 0};
@@ -19,11 +19,11 @@ void GameBase_Initialize(struct SDLContext* context){
     Sprite_SetLocation(sprite, position);
 }
 
-void GameBase_Update(struct SDLContext *context) {
+void GameBase_Update(struct egSDLContext *context) {
 
 }
 
-void GameBase_Draw(double delta, struct SDLContext *context) {
+void GameBase_Draw(double delta, struct egSDLContext *context) {
     SDL_SetRenderDrawColor(context->renderer, 0xff, 0xff, 0xff, 0xff);
     SDL_RenderClear(context->renderer);
     
@@ -35,7 +35,7 @@ void GameBase_Draw(double delta, struct SDLContext *context) {
     SDL_RenderPresent(context->renderer);
 }
 
-void GameBase_OnClose(struct SDLContext *context) {
+void GameBase_OnClose(struct egSDLContext *context) {
     Sprite_Free(sprite);
 }
 

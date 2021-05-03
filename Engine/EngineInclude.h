@@ -5,13 +5,13 @@
 #ifndef SDL2_LEARNING_ENGINEINCLUDE_H
 #define SDL2_LEARNING_ENGINEINCLUDE_H
 
-#include "SDLGame.h"
+#include "egSDLGame.h"
 #include "SDLController.h"
 #include "SDLControllerRuntime.h"
-#include "SDLContext.h"
-#include "Objects/Sprite.h"
+#include "egSDLContext.h"
+#include "Objects/egSprite.h"
 #include "Objects/Color3.h"
 #include "Objects/Vector2.h"
-#include "Objects/SpriteManager.h"
+#include "Objects/egSpriteManager.h"
 
 #endif //SDL2_LEARNING_ENGINEINCLUDE_H
