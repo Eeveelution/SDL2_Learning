@@ -3,7 +3,7 @@ project(SDL2_Learning C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(SDL2_Learning Game/GameMain.c Engine/SDLController.h Engine/SDLController.c Engine/egSDLContext.h Engine/egSDLGame.h Engine/SDLControllerRuntime.c Engine/SDLControllerRuntime.h Game/GameBase.h Engine/EngineInclude.h Game/GameBase.c Engine/Objects/egSprite.h Engine/Objects/egSprite.c Engine/Objects/Color3.h Engine/Objects/Vector2.h Engine/Objects/Vector2.c Engine/Objects/egSpriteList.h Engine/Objects/egSpriteList.c Engine/Objects/egSpriteManager.h Engine/Objects/egSpriteManager.c)
+add_executable(SDL2_Learning Game/GameMain.c Engine/egSDLController.h Engine/egSDLController.c Engine/egSDLContext.h Engine/egSDLGame.h Engine/egSDLControllerRuntime.c Engine/egSDLControllerRuntime.h Game/GameBase.h Engine/EngineInclude.h Game/GameBase.c Engine/Objects/egSprite.h Engine/Objects/egSprite.c Engine/Objects/egColor3.h Engine/Objects/Vector2.h Engine/Objects/Vector2.c Engine/Objects/egSpriteList.h Engine/Objects/egSpriteList.c Engine/Objects/egSpriteManager.h Engine/Objects/egSpriteManager.c)
 
 INCLUDE(FindPkgConfig)
 

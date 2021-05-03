@@ -11,7 +11,7 @@
 #include <stdbool.h>
 
 #include "Vector2.h"
-#include "Color3.h"
+#include "egColor3.h"
 #include "../egSDLContext.h"
 
 struct egSprite {

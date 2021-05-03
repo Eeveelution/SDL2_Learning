@@ -2,7 +2,7 @@
 
 #include <SDL2/SDL.h>
 
-#include "../Engine/SDLController.h"
+#include "../Engine/egSDLController.h"
 #include "../Engine/egSDLContext.h"
 
 #include "GameBase.h"

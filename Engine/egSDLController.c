@@ -1,7 +1,7 @@
 //
 // Created by eevee on 28.04.21.
 //
-#include "SDLController.h"
+#include "egSDLController.h"
 
 //Initializes SDL
 bool egSdlController_Init(struct egSDLContext* context) {

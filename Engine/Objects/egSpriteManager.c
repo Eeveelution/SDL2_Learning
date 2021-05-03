@@ -12,6 +12,10 @@ void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *
 }
 
 void egSpriteManager_AddSprite(struct egSpriteManager *manager, struct egSprite sprite) {
+    if(sprite.isClickable){
+        
+    }
+    
     egSpriteList_Insert(manager->spriteList, sprite);
 }
 

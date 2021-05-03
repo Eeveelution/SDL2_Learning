@@ -4,7 +4,7 @@
 
 #include "GameBase.h"
 
-#include "../Engine/Objects/Color3.h"
+#include "../Engine/Objects/egColor3.h"
 #include "../Engine/Objects/egSprite.h"
 
 struct egSprite *sprite;

@@ -2,9 +2,9 @@
 // Created by eevee on 28.04.21.
 //
 
-#include "SDLControllerRuntime.h"
+#include "egSDLControllerRuntime.h"
 
-void SdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGame *game) {
+void egSdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGame *game) {
     //Let the Game Initialize
     game->Initialize(context);
     
