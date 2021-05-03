@@ -20,7 +20,8 @@ void egSdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGa
     while(run){
         //Poll Events
         while(SDL_PollEvent(&event) != 0) {
-            switch(event.type){
+            //Handle Events
+            switch(event.type) {
                 case SDL_QUIT: {
                     run = false;
                     break;
@@ -45,22 +46,6 @@ void egSdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGa
                     game->OnSDLEvent(event);
                 
             }
-            
-            if (event.type == SDL_QUIT) {
-                run = false;
-            } else if(event.type == SDL_MOUSEMOTION){
-                int x, y;
-                SDL_GetMouseState(&x, &y);
-                struct Vector2 mousePoint = {x, y};
-                
-                game->OnMouseHover(mousePoint);
-            } else if(event.type == SDL_MOUSEBUTTONDOWN) {
-            
-            }
-            else {
-                game->OnSDLEvent(event);
-            }
-        }
         
         game->Update(context);
         
