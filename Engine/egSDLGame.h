@@ -14,7 +14,8 @@ struct egSDLGame {
     void (*Update)(struct egSDLContext* context);
     void (*Draw)(double deltaTime, struct egSDLContext* context);
     void (*OnClose)(struct egSDLContext* context);
-    void (*OnSdlEvent)(SDL_Event event);
+    void (*OnKeyDown)(SDL_Event event);
+    void (*OnMouseEvent)(SDL_Event event);
 };
 
 #endif //SDL2_LEARNING_SDLGAME_H

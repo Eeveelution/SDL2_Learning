@@ -27,7 +27,9 @@ struct egSprite {
     
     double drawDepth;
     
-    bool isClickable;
+    bool handlesMouseDown;
+    bool handlesMouseOver;
+    
     
     int spriteTag;
 };

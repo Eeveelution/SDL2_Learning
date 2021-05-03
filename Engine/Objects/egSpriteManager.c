@@ -12,8 +12,9 @@ void egSpriteManager_Draw(struct egSpriteManager *manager, struct egSDLContext *
 }
 
 void egSpriteManager_AddSprite(struct egSpriteManager *manager, struct egSprite sprite) {
-    if(sprite.isClickable){
-    
+    //Adding to Clickable list, this is to search for Clickable Sprites faster
+    if(sprite.handlesMouseDown){
+        egSpriteList_Insert(manager->clickableSpriteList, sprite);
     }
     
     egSpriteList_Insert(manager->spriteList, sprite);

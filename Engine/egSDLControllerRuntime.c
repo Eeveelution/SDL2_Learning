@@ -24,7 +24,7 @@ void egSdlControllerRuntime_RunGame(struct egSDLContext *context, struct egSDLGa
             if (event.type == SDL_QUIT) {
                 run = false;
             } else {
-                game->OnSdlEvent(event);
+                game->OnKeyDown(event);
             }
         }
         

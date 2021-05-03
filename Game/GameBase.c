@@ -12,7 +12,7 @@ struct egSprite *sprite;
 void GameBase_Initialize(struct egSDLContext* context){
     egColor3 colorKey = {0x01, 0x00, 0x00};
     egColor3 testColor = {0xff, 0x00, 0xff};
-    sprite = egSprite_NewSpriteTextured(context, "test.png", colorKey);
+    sprite = egSprite_NewSpriteTextured(context, "test.png", colorKey, true);
     
     struct Vector2 position = {0, 0};
     

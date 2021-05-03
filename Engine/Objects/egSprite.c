@@ -7,7 +7,7 @@
 struct egSprite *egSprite_NewSpriteEmpty(bool clickable) {
     struct egSprite *sprite = malloc(sizeof(struct egSprite));
     
-    sprite->isClickable = clickable;
+    sprite->handlesMouseDown = clickable;
     
     sprite->spriteTexture = NULL;
     
@@ -30,7 +30,7 @@ struct egSprite *egSprite_NewSpriteEmpty(bool clickable) {
 struct egSprite* egSprite_NewSpriteTextured(struct egSDLContext *context, char *imageFilename, egColor3 colorKey, bool clickable) {
     struct egSprite *sprite = malloc(sizeof(struct egSprite));
     
-    sprite->isClickable = clickable;
+    sprite->handlesMouseDown = clickable;
     
     egSprite_LoadImage(sprite, context, imageFilename, colorKey);
     
@@ -40,7 +40,7 @@ struct egSprite* egSprite_NewSpriteTextured(struct egSDLContext *context, char *
     sprite->spriteLocation = centerNullPoint;
     sprite->rotationAngle = 0;
     sprite->rendererFlip = SDL_FLIP_NONE;
-    sprite->isClickable = false;
+    sprite->handlesMouseDown = false;
     sprite->spriteTag = -1;
     sprite->drawDepth = 0.0;
     

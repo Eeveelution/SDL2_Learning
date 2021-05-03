@@ -6,6 +6,7 @@
 #include "../Engine/egSDLContext.h"
 
 #include "GameBase.h"
+#include "../Engine/egSDLControllerRuntime.h"
 
 int main() {
     struct egSDLContext ctx;
@@ -19,9 +20,9 @@ int main() {
         game.Draw = GameBase_Draw;
         game.OnClose = GameBase_OnClose;
         game.Update = GameBase_Update;
-        game.OnSdlEvent = GameBase_OnSdlEvent;
+        game.OnKeyDown = GameBase_OnSdlEvent;
     
-        SdlControllerRuntime_RunGame(&ctx, &game);
+        egSdlControllerRuntime_RunGame(&ctx, &game);
     }
 
     return 0;
